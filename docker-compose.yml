@@ -1,0 +1,39 @@
+version: '3'
+services:
+  web-app:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    ports:
+      - '3000:3000'
+    restart: on-failure
+    container_name: web-app
+  api-app:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://postgres:admin@postgres:5432/postgres
+      NODE_ENV: development
+      PORT: 3030
+    ports:
+      - "3030:3030"
+    command: npm run dev
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    restart: on-failure
+    container_name: api-app
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: postgres
