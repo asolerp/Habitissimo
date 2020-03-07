@@ -8,7 +8,7 @@
     "dev": "nodemon ./server.js --exec babel-node -- server",
     "migrate": "node ./bin/migrate.js",
     "migrate:create": "migrate create --migrations-dir='./migrations'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require babel-register tests/*.js --exit"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +32,9 @@
     "uuid": "^7.0.2"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.1.1",
     "nodemon": "^2.0.2"
   }
 }

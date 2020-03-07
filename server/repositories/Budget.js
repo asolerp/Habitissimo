@@ -1,5 +1,5 @@
 import sql from 'sql-template-strings'
-import uuid from 'uuid/v4'
+import {v4 as uuid} from 'uuid'
 import db from '../db/db'
 
 import {
@@ -8,12 +8,30 @@ import {
 
 const STATUS_PENDING = "pending"
 const STATUS_PUBLISHED = "published"
+const STAUTS_EXCLUDED = "excluded"
 
 const getBudget = async(id) => {
   const {rows} = await db.query(sql`
   SELECT * FROM budget WHERE id=${id} LIMIT 1;
   `);
   return rows[0];
+}
+
+const listBudgetPaginated = async(email, page = 1, limit = 20) => {
+  try {
+    const query = sql` SELECT * FROM budget b`
+    if (email) {
+      query.append(sql` INNER JOIN users u on u.id = b.user_id`)
+      query.append(sql` WHERE u.email=${email}`)
+    }
+    query.append(sql` LIMIT ${limit} OFFSET ${(page - 1) * limit} `)
+  
+    const {rows} = await db.query(query.text, query.values);  
+    
+    return { budgets: rows, limit, page }
+  } catch (err) {
+    throw err
+  }
 }
 
 const createNewBudget = async(badget) => {
@@ -59,7 +77,7 @@ const updateBudget = async(budget) => {
 
     const {rows} = await db.query(query.text, query.values);  
     const [budget] = rows;
-    console.log("Budget", budget)
+
     return budget
   } catch (error) {
     throw error;
@@ -68,11 +86,9 @@ const updateBudget = async(budget) => {
 
 const publishBudget = async(id) => {
 
-  console.log("[[ID]]", id)
-
   try {
     const budgetToUpdate = await getBudget(id)
-    console.log("[[BudgetToUpdate]]", budgetToUpdate)
+
     if (!budgetToUpdate) {
       throw error;
     }
@@ -100,9 +116,37 @@ const publishBudget = async(id) => {
   }
 }
 
+const excludeBudget = async(id) => {
+
+  try {
+    const budgetToUpdate = await getBudget(id)
+
+    if (!budgetToUpdate) {
+      throw error;
+    }
+
+    if (budgetToUpdate.status === STAUTS_EXCLUDED) {
+      throw "Budget cannot be excluded as has been already excluded"
+    }
+
+    const query = sql`UPDATE budget`
+    query.append(sql` SET status=${STAUTS_EXCLUDED}`)
+    query.append(sql` WHERE id=${id}`)
+    query.append(sql` RETURNING id;`)
+
+    const {rows} = await db.query(query.text, query.values);  
+    const [budget] = rows;
+    return budget
+  } catch (error) {
+    throw error;
+  }
+}
+
 
 export {
   createNewBudget,
   updateBudget,
-  publishBudget
+  publishBudget,
+  excludeBudget,
+  listBudgetPaginated
 };

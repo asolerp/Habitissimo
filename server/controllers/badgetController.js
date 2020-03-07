@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { findUser, createUser, updateUser, } from '../repositories/User' 
-import { createNewBudget, updateBudget, publishBudget } from '../repositories/Budget'
+import { createNewBudget, updateBudget, publishBudget, excludeBudget, listBudgetPaginated } from '../repositories/Budget'
 
 
 import {
@@ -11,6 +11,35 @@ import {
 import {
   errorMessage, successMessage, status,
 } from '../helpers/status';
+
+/**
+   * List Budget Paginated
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} reflection object
+   */
+
+  const listB = async (req, res) => {
+
+    const email = req.query.email
+    const page = req.query.page
+    const limit = req.query.limit
+    try {
+      if (page < 1 || limit < 1) {
+        errorMessage.error = 'Page and limit must be higher than 0 ✋';
+        return res.status(status.bad).send(errorMessage);
+      }
+      const budgets = await listBudgetPaginated(email, page, limit)
+      if (!budgets) {
+        errorMessage.error = 'Unable to list budgets 😢';
+        return res.status(status.bad).send(errorMessage);
+      }
+      const result = budgets
+      return res.status(status.success).send(result)
+    } catch (err) {
+      return res.status(status.error).send(errorMessage);
+    }
+  }
 
 /**
    * Create A Budget
@@ -48,8 +77,8 @@ import {
         return res.status(status.bad).json({message: 'Unable to add budget'});
       }
 
-      successMessage.success = 'Badget created!'
-      res.status(status.success).send(successMessage)
+      successMessage.success = 'Badget created! 🤠'
+      res.status(status.success).send(Object.assign(successMessage, budget))
     } catch(err) {
       return res.status(status.error).send(errorMessage);
     }
@@ -117,9 +146,39 @@ import {
     }
   }
 
+    /**
+   * Exclude Budget
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} reflection object
+   */
+
+  const excludeB = async (req, res) => {
+    try {
+      const { id } = req.body
+
+      if (isEmpty(id)) {
+       errorMessage.error = 'Budget id field cannot be empty';
+       return res.status(status.bad).send(errorMessage);
+      }
+      
+      const budget = await excludeBudget(id)
+      if (!budget) {
+       return res.status(status.bad).json({message: 'Unable to exclude budget 😱'});
+     }
+     successMessage.message = 'Budget excluded 🚫!'
+     res.status(status.success).send(successMessage)
+    } catch(err) {
+      errorMessage.error = err
+      return res.status(status.bad).send(errorMessage);
+    }
+  }
+
 
   export {
     createB,
     updateB,
-    publishB
+    publishB,
+    excludeB,
+    listB
   }

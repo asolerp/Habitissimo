@@ -27,3 +27,5 @@ const port = env.PORT || 3030;
 const server = http.createServer(app);
 server.listen(port, () => console.log(`🚀 Habitissimo API runing on ${port}`));
 
+// Export app for testing purposes
+export default app;

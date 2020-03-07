@@ -23,7 +23,7 @@ const createUser = async(user) => {
 
 const updateUser = async(user) => {
   const { id, phone, address } = user
-  console.log("Phone", phone)
+
   try {
     const { rows } = await db.query(sql`
       UPDATE users 
