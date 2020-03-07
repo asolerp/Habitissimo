@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "1e14943b-d7fd-4d20-ab21-b1076e96f922",
+		"name": "Habitissimo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Update Budget",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"e0e1cd09-27e3-4cda-b655-ff558149a482\",\n\t\"title\": \"Arquitecto\",\n\t\"description\": \"Funciona muy bien\",\n\t\"category\": \"1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/budget/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"budget",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish Budget",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"e0e1cd09-27e3-4cda-b655-ff558149a482\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/budget/publish",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"budget",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exclude Budget",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"e0e1cd09-27e3-4cda-b655-ff558149a482\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/budget/exclude",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"budget",
+						"exclude"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Budgets",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/budget?page=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"budget"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "alberto@gmail.com",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Budget",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Diseñador/a\",\n\t\"description\": \"Busco proyecto de reforma\",\n\t\"category\": \"categoría\",\n\t\"subcategory\": \"subcategoría\",\n\t\"email\": \"cbaudes@gmail.com\",\n\t\"phone\": \"696 48 79 07\",\n\t\"address\": \"Calvià\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/budget/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"budget",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
