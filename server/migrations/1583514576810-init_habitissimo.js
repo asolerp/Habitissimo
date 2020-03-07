@@ -5,7 +5,7 @@ module.exports.up = async function (next) {
   const client = await db.connect();
 
   await client.query(`
-    CREATE TYPE Status AS ENUM ('pending', 'published', 'excluded');
+    CREATE TYPE sbadget AS ENUM ('pending', 'published', 'excluded');
   `)
 
   await client.query(`
@@ -13,7 +13,8 @@ module.exports.up = async function (next) {
     id uuid PRIMARY KEY,
     email text not NULL,
     phone text not NULL,
-    address text not NULL
+    address text not NULL,
+    created_on TIMESTAMP NOT NULL
   );
 
   CREATE TABLE IF NOT EXISTS budget (
@@ -22,8 +23,9 @@ module.exports.up = async function (next) {
     description text not NULL,
     category text,
     subcategory text,
-    status Status,
-    user_id uuid REFERENCES users (id) ON DELETE CASCADE
+    status sbadget,
+    user_id uuid REFERENCES users (id) ON DELETE CASCADE,
+    created_on TIMESTAMP NOT NULL
   );
   `);
 
@@ -41,7 +43,7 @@ module.exports.down = async function (next) {
   await client.query(`
   DROP TABLE budget;
   DROP TABLE users;
-  DROP TYPE IF EXISTS Status;
+  DROP TYPE sbadget;
 
   `);
 
