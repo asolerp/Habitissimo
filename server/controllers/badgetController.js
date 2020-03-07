@@ -77,7 +77,7 @@ import {
         return res.status(status.bad).json({message: 'Unable to add budget'});
       }
 
-      successMessage.success = 'Badget created! 🤠'
+      successMessage.message = 'Badget created! 🤠'
       res.status(status.success).send(Object.assign(successMessage, budget))
     } catch(err) {
       return res.status(status.error).send(errorMessage);
@@ -110,7 +110,7 @@ import {
        if (!budget) {
         return res.status(status.bad).json({message: 'Unable to update budget'});
       }
-      successMessage.message = 'Budget updated!'
+      successMessage.message = 'Budget updated! 👽'
       res.status(status.success).send(successMessage)
      } catch(err) {
        errorMessage.error = err
@@ -138,7 +138,7 @@ import {
       if (!budget) {
        return res.status(status.bad).json({message: 'Unable to publish budget'});
      }
-     successMessage.message = 'Budget published!'
+     successMessage.message = 'Budget published! 🥊'
      res.status(status.success).send(successMessage)
     } catch(err) {
       errorMessage.error = err
