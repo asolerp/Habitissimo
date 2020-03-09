@@ -7,9 +7,9 @@ El stack utilizado para desarrollar el challenge ha sido el siguiente:
 * BBDD - PostgreSQL
 
 
-### Prerequisitos
+### Pre-requisitos
 
-El proyecto esta comprimido en un contenedor docker por lo que para correrlo hará falta tener instalado docker en el sistema. Se puede descargar el archivo json de postman para probar los endpoint del back.
+El proyecto esta comprimido en un contenedor docker por lo que para correrlo hará falta tener instalado docker en el sistema. Se puede descargar el archivo json de postman para probar los endpoints del back.
 
 
 ### Instalación
@@ -33,7 +33,7 @@ npm run migrate up
 
 ## Test - Back
 
-Para ejecutar los test del back ejectar el siguiente comando dentro del contenedor:
+Para ejecutar los test del back ejecutar el siguiente comando dentro del contenedor. Haber hecho las migraciones para que funcionen correctamente.
 
 ```
 npm run test
