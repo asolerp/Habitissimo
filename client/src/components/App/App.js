@@ -9,7 +9,7 @@ import Header from '../Header/Header';
 import StepperForm from '../Stepper/Stepper'
 
 const AppContainer = styled.div`
-
+  overflow: hidden;
 `
 
 const AppBody = styled.header`

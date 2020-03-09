@@ -3,6 +3,7 @@ import React, {createContext, useReducer} from 'react';
 
 
 const initialState = {
+  step: localStorage.getItem("habitissimo_budget") && (JSON.parse(localStorage.getItem("habitissimo_budget")).step || 0),
   description: localStorage.getItem("habitissimo_budget") && (JSON.parse(localStorage.getItem("habitissimo_budget")).description || ''),
   date: localStorage.getItem("habitissimo_budget") && (JSON.parse(localStorage.getItem("habitissimo_budget")).date || ''),
   category: localStorage.getItem("habitissimo_budget") && (JSON.parse(localStorage.getItem("habitissimo_budget")).category || ''),
@@ -18,6 +19,9 @@ const { Provider } = store;
 const StateProvider = ( { children } ) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch(action.type) {
+      case 'step':
+        localStorage.setItem("habitissimo_budget", JSON.stringify({...state, step: action.value}));
+        return { ...state, step: action.value }
       case 'description':
         localStorage.setItem("habitissimo_budget", JSON.stringify({...state, description: action.value}));
         return { ...state, description: action.value }
@@ -42,6 +46,19 @@ const StateProvider = ( { children } ) => {
       case 'phone':
         localStorage.setItem("habitissimo_budget", JSON.stringify({...state, phone: action.value}));
         return { ...state, phone: action.value }
+      case 'clear':
+        localStorage.setItem("habitissimo_budget", JSON.stringify({}));
+        return { 
+          step: 0,
+          description: "",
+          date: "",
+          category: "",
+          subcategory: "",
+          price: "",
+          name: "",
+          email: "", 
+          phone: ""
+        }
       default:
         throw new Error();
     };

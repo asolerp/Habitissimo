@@ -11,7 +11,6 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 4px 0px black;
 `
 
 const Image = styled.img`
@@ -31,7 +30,7 @@ const Image = styled.img`
 const Header = () => {
   return (
     <NavBar>
-      <Image src={logo} alt="Habitissimo"></Image>
+      {/* <Image src={logo} alt="Habitissimo"></Image> */}
     </NavBar>
   )
 }

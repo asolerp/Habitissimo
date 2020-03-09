@@ -4,19 +4,40 @@ import React, { useContext } from 'react'
 import { store } from '../../store/store';
 import styled from 'styled-components';
 
-const StepContainer = styled.div`
+// Styles
+import { StepContainer } from '../../styles/formStyles'
+
+const ResumenInputConatiner = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
 `
+
 const Title = styled.h1`
   font-size: 20px;
   color: black;
+  text-align: center;
+  font-weight: 300;
 `
-const Span = styled.span`
+const Span = styled.p`
   color: black;
+  margin-bottom: 0;
+  font-weight: 100;
+  font-size: 20px;
 `
 const Value = styled.p`
-  color: black;
+  color: #2684ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  font-weight: 300;
+  font-size: 20px;
+`
+
+const Description = styled.p`
+  color: #2684ff;
+  margin-bottom: 0;
+  font-weight: 300;
+  font-size: 20px;
 `
 
 const Step4 = () => {
@@ -26,21 +47,37 @@ const Step4 = () => {
 
   return (
     <StepContainer>
-      <Title>Resumen</Title>
+      <Title>RESUMEN</Title>
       <Span>Descripción: </Span>
-      <Value>{state.description}</Value>
-      <Span>Fecha próxima: </Span>
-      <Value>{state.date.label}</Value>
-      <Span>Categoría: </Span>
-      <Value>{state.category.label}</Value>
-      <Span>Subcategoría: </Span>
-      <Value>{state.subcategory.label}</Value>
-      <Span>Nombre: </Span>
-      <Value>{state.name}</Value>
-      <Span>Email: </Span>
-      <Value>{state.email}</Value>
-      <Span>Teléfono: </Span>
-      <Value>{state.phone}</Value>
+      <Description>{state.description}</Description>
+      <ResumenInputConatiner>
+        <Span>Fecha próxima: </Span>
+        <Value>{state.date.label}</Value>
+      </ResumenInputConatiner>
+      <ResumenInputConatiner>
+        <Span>Categoría: </Span>
+        <Value>{state.category.label || ""}</Value>
+      </ResumenInputConatiner>
+      <ResumenInputConatiner>
+        <Span>Subcategoría: </Span>
+        <Value>{state.subcategory.label || ""}</Value>
+      </ResumenInputConatiner>
+      <ResumenInputConatiner>
+        <Span>Precio: </Span>
+        <Value>{state.price.label || ""}</Value>
+      </ResumenInputConatiner>
+      <ResumenInputConatiner>
+        <Span>Nombre: </Span>
+        <Value>{state.name}</Value>
+      </ResumenInputConatiner>
+      <ResumenInputConatiner>
+        <Span>Email: </Span>
+        <Value>{state.email}</Value>
+      </ResumenInputConatiner>
+      <ResumenInputConatiner>
+        <Span>Teléfono: </Span>
+        <Value>{state.phone}</Value>
+      </ResumenInputConatiner>
     </StepContainer>
   )
 }
