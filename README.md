@@ -1,6 +1,6 @@
 # Habitissimo Challenge
 
-El stack utilizado para desarrollar el challenge ha sido el siguiente. 
+El stack utilizado para desarrollar el challenge ha sido el siguiente: 
 
 * Front - ReactJS
 * Back - NodeJS Express
@@ -9,7 +9,7 @@ El stack utilizado para desarrollar el challenge ha sido el siguiente.
 
 ### Prerequisitos
 
-El proyecto esta comprimido en un contenedor de docker por lo que para correrlo hará falta tener instalado docker en el sistema.
+El proyecto esta comprimido en un contenedor docker por lo que para correrlo hará falta tener instalado docker en el sistema. Se puede descargar el archivo json de postman para probar los endpoint del back.
 
 
 ### Instalación
@@ -20,7 +20,7 @@ Dentro de la carpeta raiz del proyecto correr el siguiente comando:
 docker-compose up --build -d (opcional para correrlo en segundo plano)
 ```
 
-Una vez este el proyecto activo, ejecutar los siguiente comandos para ejectura la migraciones dentro del contenedor de docker
+Una vez esté el proyecto activo, correr los siguientes comandos para ejecutar las migraciones dentro del contenedor
 
 ```
 docker-compose run api-app bash
@@ -43,5 +43,3 @@ npm run test
 ## Autor
 
 * **Alberto Soler** 
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.

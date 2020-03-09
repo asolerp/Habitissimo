@@ -25,12 +25,24 @@ const Image = styled.img`
     width: 25vw;
   }
 
+  @media ${device.laptop} { 
+    width: 15vw;
+  }
+
+  @media ${device.desktop} { 
+    width: 10vw;
+  }
+
+  @media ${device.desktopL} { 
+    width: 10vw;
+  }
+
 `
 
 const Header = () => {
   return (
     <NavBar>
-      {/* <Image src={logo} alt="Habitissimo"></Image> */}
+      <Image src={logo} alt="Habitissimo"></Image>
     </NavBar>
   )
 }

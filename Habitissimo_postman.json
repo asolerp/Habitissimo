@@ -18,7 +18,8 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"id\": \"e0e1cd09-27e3-4cda-b655-ff558149a482\",\n\t\"title\": \"Arquitecto\",\n\t\"description\": \"Funciona muy bien\",\n\t\"category\": \"1\"\n}"
+					"raw": "{\n\t\"id\": \"41f61f86-69db-42fc-891d-87c854aab717\",\n\t\"title\": \"Decorador\",\n\t\"description\": \"\",\n\t\"category\": \"\"\n}",
+					"options": {}
 				},
 				"url": {
 					"raw": "http://localhost:3030/api/budget/",
@@ -47,12 +48,8 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": \"e0e1cd09-27e3-4cda-b655-ff558149a482\"\n}"
-				},
 				"url": {
-					"raw": "http://localhost:3030/api/budget/publish",
+					"raw": "http://localhost:3030/api/budget/publish/:id",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -61,7 +58,14 @@
 					"path": [
 						"api",
 						"budget",
-						"publish"
+						"publish",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -80,10 +84,11 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"id\": \"e0e1cd09-27e3-4cda-b655-ff558149a482\"\n}"
+					"raw": "",
+					"options": {}
 				},
 				"url": {
-					"raw": "http://localhost:3030/api/budget/exclude",
+					"raw": "http://localhost:3030/api/budget/exclude/:id",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -92,7 +97,14 @@
 					"path": [
 						"api",
 						"budget",
-						"exclude"
+						"exclude",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -109,10 +121,6 @@
 						"value": "application/json"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://localhost:3030/api/budget?page=1",
 					"protocol": "http",
@@ -158,7 +166,8 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"title\": \"Diseñador/a\",\n\t\"description\": \"Busco proyecto de reforma\",\n\t\"category\": \"categoría\",\n\t\"subcategory\": \"subcategoría\",\n\t\"email\": \"cbaudes@gmail.com\",\n\t\"phone\": \"696 48 79 07\",\n\t\"address\": \"Calvià\"\n}"
+					"raw": "{\n\t\"title\": \"Diseñador/a\",\n\t\"description\": \"Busco proyecto de reforma\",\n\t\"category\": \"categoría\",\n\t\"subcategory\": \"subcategoría\",\n\t\"email\": \"cbaudes@gmail.com\",\n\t\"phone\": \"696 48 79 07\",\n\t\"address\": \"Calvià\"\n}",
+					"options": {}
 				},
 				"url": {
 					"raw": "http://localhost:3030/api/budget/",
@@ -176,5 +185,6 @@
 			},
 			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

@@ -10,12 +10,13 @@ const ModalContainer = styled.div`
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -100px;
+    margin-left: -115px;
     margin-top: -50px;
     background-color: rgba(38, 132, 255, 0.9);
     border: 0;
     border-radius: 10px;
-    z-index: 2
+    z-index: 2;
+    padding: 15px;
 `
 
 const Modal = ({ open, children }) => {

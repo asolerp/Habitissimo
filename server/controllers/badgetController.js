@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { findUser, createUser, updateUser, } from '../repositories/User' 
 import { createNewBudget, updateBudget, publishBudget, excludeBudget, listBudgetPaginated } from '../repositories/Budget'
-
+import axios from 'axios'
 
 import {
   isValidEmail,
@@ -11,6 +11,26 @@ import {
 import {
   errorMessage, successMessage, status,
 } from '../helpers/status';
+
+/**
+   * List Categories
+   * @returns {object} reflection object
+   */
+
+const listCategories = async (req, res) => {
+  const {data} = await axios('https://api.habitissimo.es/category/list/')
+  res.status(200).send(data)
+}
+
+/**
+   * List Subcategories
+   * @returns {object} reflection object
+   */
+
+const listSubcategories = async (req, res) => {
+  const {data} = await axios(`https://api.habitissimo.es/category/list/${req.params.id}`)
+  res.status(200).send(data)
+}
 
 /**
    * List Budget Paginated
@@ -127,7 +147,7 @@ import {
 
   const publishB = async (req, res) => {
     try {
-      const { id } = req.body
+      const { id } = req.params
 
       if (isEmpty(id)) {
        errorMessage.error = 'Budget id field cannot be empty';
@@ -155,7 +175,7 @@ import {
 
   const excludeB = async (req, res) => {
     try {
-      const { id } = req.body
+      const { id } = req.params
 
       if (isEmpty(id)) {
        errorMessage.error = 'Budget id field cannot be empty';
@@ -180,5 +200,7 @@ import {
     updateB,
     publishB,
     excludeB,
-    listB
+    listB,
+    listCategories,
+    listSubcategories
   }

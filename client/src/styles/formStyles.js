@@ -15,7 +15,7 @@ const StepContainer = styled.div`
 const Label = styled.label`
   color: black;
   margin-bottom: 10px;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 20px;
 `
 

@@ -3,6 +3,8 @@ import React, { useContext } from 'react'
 // Global Store
 import { store } from '../../store/store';
 import styled from 'styled-components';
+import { device } from '../../utils/devices'
+
 
 // Styles
 import { StepContainer } from '../../styles/formStyles'
@@ -17,27 +19,40 @@ const Title = styled.h1`
   font-size: 20px;
   color: black;
   text-align: center;
-  font-weight: 300;
+  font-weight: 200;
+  margin-top: 15px;
 `
 const Span = styled.p`
   color: black;
   margin-bottom: 0;
   font-weight: 100;
-  font-size: 20px;
+  font-size: 15px;
+
+  @media ${device.laptop} { 
+    font-size: 20px;
+  }
+
 `
 const Value = styled.p`
   color: #2684ff;
   margin-bottom: 0;
   margin-left: 10px;
   font-weight: 300;
-  font-size: 20px;
-`
+  font-size: 15px;
 
+  @media ${device.laptop} { 
+    font-size: 20px;
+  }
+`
 const Description = styled.p`
   color: #2684ff;
   margin-bottom: 0;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 15px;
+  
+  @media ${device.laptop} { 
+    font-size: 20px;
+  }
 `
 
 const Step4 = () => {
@@ -47,7 +62,7 @@ const Step4 = () => {
 
   return (
     <StepContainer>
-      <Title>RESUMEN</Title>
+      {/* <Title>RESUMEN</Title> */}
       <Span>Descripción: </Span>
       <Description>{state.description}</Description>
       <ResumenInputConatiner>

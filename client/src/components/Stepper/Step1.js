@@ -22,23 +22,24 @@ const Step1 = () => {
   const { state, dispatch } = globalState;
 
   return (
-    <StepContainer>
-      <InputConatiner>
-        <Label>Descripción</Label>
-        <TextArea rows={5} value={state.description} onChange={(event) =>  dispatch({
-            type: "description",
-            value: event.target.value
-          })}></TextArea>
-      </InputConatiner>
-      <InputConatiner>
-        <Label>Fecha Aproximada</Label>
-        <Select value={state.date} options={options} styles={CustomSelectStyles} onChange={(selectedOption) =>  dispatch({
-            type: "date",
-            value: selectedOption
-          })}></Select>
-      </InputConatiner>
-
-    </StepContainer>
+    <form>
+      <StepContainer>
+          <InputConatiner>
+            <Label>Descripción</Label>
+            <TextArea rows={5} value={state.description} required pattern="[A-Za-z0-9]{1,20}" onChange={(event) =>  dispatch({
+                type: "description",
+                value: event.target.value
+              })}></TextArea>
+          </InputConatiner>
+          <InputConatiner>
+            <Label>Fecha Aproximada</Label>
+            <Select value={state.date} options={options} styles={CustomSelectStyles} onChange={(selectedOption) =>  dispatch({
+                type: "date",
+                value: selectedOption
+              })}></Select>
+          </InputConatiner>
+      </StepContainer>
+      </form>
   )
 }
 

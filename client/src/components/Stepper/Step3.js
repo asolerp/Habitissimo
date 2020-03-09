@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
-import styled from 'styled-components'
-
+import React, { useContext } from 'react'
 
 // Global Store
 import { store } from '../../store/store';
@@ -21,21 +19,36 @@ const Step3 = () => {
     <StepContainer>
       <InputConatiner>
         <Label>Nombre</Label>
-        <Input value={state.name} placeholder="Nombre" onChange={(event) =>  dispatch({
+        <Input 
+          value={state.name} 
+          placeholder="Nombre" 
+          required="required" 
+          pattern="[A-Za-z0-9]{1,20}" 
+          onChange={(event) =>  dispatch({
             type: "name",
             value: event.target.value
           })}></Input>
       </InputConatiner>
       <InputConatiner>
         <Label>Email</Label>
-        <Input value={state.email} placeholder="Email" onChange={(event) =>  dispatch({
+        <Input 
+          value={state.email} 
+          placeholder="Email" 
+          required="required" 
+          pattern="[A-Za-z0-9]{1,20}" 
+          onChange={(event) =>  dispatch({
             type: "email",
             value: event.target.value
           })}></Input>
       </InputConatiner>      
       <InputConatiner>
         <Label>Teléfono</Label>
-        <Input value={state.phone} placeholder="Teléfono" onChange={(event) =>  dispatch({
+        <Input 
+          value={state.phone} 
+          placeholder="Teléfono" 
+          required="required" 
+          pattern="[A-Za-z0-9]{1,20}" 
+          onChange={(event) =>  dispatch({
             type: "phone",
             value: event.target.value
           })}></Input>
