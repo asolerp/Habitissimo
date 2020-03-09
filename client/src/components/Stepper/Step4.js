@@ -49,7 +49,7 @@ const Description = styled.p`
   margin-bottom: 0;
   font-weight: 300;
   font-size: 15px;
-  
+
   @media ${device.laptop} { 
     font-size: 20px;
   }
@@ -62,7 +62,6 @@ const Step4 = () => {
 
   return (
     <StepContainer>
-      {/* <Title>RESUMEN</Title> */}
       <Span>Descripción: </Span>
       <Description>{state.description}</Description>
       <ResumenInputConatiner>
